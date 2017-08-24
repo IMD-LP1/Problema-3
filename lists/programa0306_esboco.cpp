@@ -1,3 +1,5 @@
+/** @file programa0306_esboco.cpp	*/
+/** @@question 6		*/
 #include <iostream>
 #include <iomanip>
 
