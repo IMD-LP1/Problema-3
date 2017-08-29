@@ -1,0 +1,75 @@
+
+/** 
+ *	@brief		Dados do vetor
+ *	@details	tam Valor do tamanho do vetor
+ *	@details	elementos Elementos do vetor		
+*/
+struct Vector{
+	int tam ;
+	double *elementos ;
+} ;
+void vector_init(Vector& v, int tam) {
+	v.elementos = new (nothrow)double[tam];
+	v.tam = tam;
+	if(!v.elementos){
+		exit(1);
+	}
+
+}
+
+void vector_free (Vector& v) {
+	delete[] v.elementos;
+	v.elementos = nullptr;
+}
+
+void vector_read (Vector& v)
+{
+	for (int i = 0; i < v.tam; ++i){
+		cin >> v.elementos[i];
+	}
+}
+double vector_sum (Vector& v) {
+	double somatorio;
+	for (int i = 0; i < v.tam; ++i){
+		somatorio += v.elementos[i];
+	}
+	return somatorio;
+}
+
+bool vector_find (Vector& v , int key) {
+	for (int i = 0; i < v.tam; ++i){
+		if (v.elementos[i] == key){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+
+int main (int argc , char *argv[]) {
+	int n{0};
+	Vector vetor;
+	int key;
+
+	cout << "Digite o tamanho do vetor!\n";
+	cin >> n;
+	vector_init(vetor,n);
+	vector_read(vetor);
+	cout << "O valor do somatorio eh: " << vector_sum(vetor) << endl;
+	cout << "Informe a chave de busca!\n";
+	cin >> key;
+	if (vector_find(vetor,key)){
+		cout << "Chave localizada!\n";
+	}
+	else {
+		cout << "Chave não encontrada!\n";
+	}
+
+
+
+
+
+	return EXIT_SUCCESS ;
+}
