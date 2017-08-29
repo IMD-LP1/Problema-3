@@ -1,0 +1,3 @@
+bacharelado : 5
+tecnologia : 5
+informacao : 5
