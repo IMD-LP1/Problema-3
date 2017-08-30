@@ -38,9 +38,12 @@ int main (int argc, char *argv[]) {
 	}
 	else {
 		while (!in.eof()) {
-		getline(in, line , ':') ;
-		quantidade << in ;
-		cout << quantidade ; 
+			getline(in, line , ':') ;
+			in >> quantidade ;
+			//cout << quantidade ; 
+			for (int ii = 0 ; ii < quantidade ; ii++) {
+				out << line << " " ;				
+			}
 		}
 		
 	}
