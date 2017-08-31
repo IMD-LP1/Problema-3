@@ -5,11 +5,16 @@ using std::endl ;
 #include <cstdio>
 #include <fstream>
 
-
+void palavras(std::string palavra, int n, std::ofstream& out) {
+	int i;
+	for (i = 0;i < n; i++) {
+			out << palavra << " ";				
+	}
+}
 
 int main (int argc, char *argv[]) {
 	
-	int quantidade, i;
+	int quantidade;
 	std::string output, palavra, ponto; 
 	
 	if (argc < 2) {
@@ -28,8 +33,7 @@ int main (int argc, char *argv[]) {
 		std::perror("Falha na abertura do arquivo!");
 		exit(1);
 	}
-
-	std::string line ;
+	
 	std::ofstream out(output);
 	
 	if (not out) {
@@ -38,12 +42,12 @@ int main (int argc, char *argv[]) {
 	}
 	
 	while (!in.eof()) {
+		
 		in >> palavra;
 		in >> ponto;
 		in >> quantidade;
-		for (i = 0 ;i < quantidade; i++) {
-			out << palavra << " ";				
-		}
+		palavras(palavra, quantidade, out);
+		quantidade = 0;
 	}
 		
 	out.close();
