@@ -1,3 +1,5 @@
+/** @file q10.cpp	*/
+/** @question 10	*/
 #include <iostream>
 using std::cout ;
 using std::cin ;

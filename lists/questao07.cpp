@@ -1,5 +1,5 @@
-/** @file programa0306_esboco.cpp	*/
-/** @@question 6		*/
+/** @file questao07.cpp	*/
+/** @question 7		*/
 #include <iostream>
 #include <iomanip>
 
@@ -69,7 +69,7 @@ void matrix_write(Matrix<T>& m) {
 
 template<typename T>
 void verifica (Matrix<T>& m1 ,Matrix<T>& m2 ) {
-	if (m1.linhas == 0 || m2.colunas == 0) {
+	if (m1.linhas != m2.colunas) {
 		cout << "Não é possível fazer a multiplicação." << endl ;
 		exit(1) ;
 	}
@@ -85,8 +85,10 @@ void verifica (Matrix<T>& m1 ,Matrix<T>& m2 ) {
 
 template<typename T>
 void multiplica (Matrix<T>& m1 ,Matrix<T>& m2 ) {
-	for (int ii = 0 ; ii < m1.linhas ; ii++) {
-		for (int jj = 0 ; jj < m1.colunas ; jj++) {
+	int ii;
+	int jj;
+	for (ii = 0 ; ii < m1.linhas ; ii++) {
+		for (jj = 0 ; jj < m1.colunas ; jj++) {
 			cout << m1.elemento[ii][jj] * m2.elemento[jj][ii] << " "  ;
 		}
 		cout << '\n' ;
@@ -124,7 +126,8 @@ int main(int argc, char* argv[]) {
 	// solicitar e ler valores da matriz m2
 	cout << "Informar elementos da matriz M2" << endl;
 	matrix_read(m2);
-
+	
+	// Verifica se a multiplicação entre as matrizes m1 e m2 é possivel
 	verifica(m1,m2) ;
 
 
