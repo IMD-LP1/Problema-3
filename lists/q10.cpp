@@ -9,46 +9,44 @@ using std::endl ;
 
 int main (int argc, char *argv[]) {
 	
-	int quantidade ;
-	std::string  output ; 
+	int quantidade, i;
+	std::string output, palavra, ponto; 
+	
 	if (argc < 2) {
-		cout << "Informe o arquivo de entrada" << endl ;
-		return EXIT_FAILURE ;
+		cout << "Informe o arquivo de entrada" << endl;
+		return EXIT_FAILURE;
 	}
 	else if(argc == 2) { 
-		output = "output.txt" ;
-		
-	}
-
-	else {
-		output = argv[2] ;
-		
+		output = "output.txt";	
+	} else {
+		output = argv[2];
 	}	
 
-	std::fstream in (argv[1]) ;
+	std::ifstream in(argv[1]);
+	
 	if (not in) {
-		std::perror("input") ;
-
+		std::perror("Falha na abertura do arquivo!");
+		exit(1);
 	}
 
 	std::string line ;
-	std::fstream out(output) ;
+	std::ofstream out(output);
+	
 	if (not out) {
-		std::perror("output") ;
+		std::perror("Falha na criação do arquivo");
+		exit(1);
 	}
-	else {
-		while (!in.eof()) {
-			getline(in, line , ':') ;
-			in >> quantidade ;
-			//cout << quantidade ; 
-			for (int ii = 0 ; ii < quantidade ; ii++) {
-				out << line << " " ;				
-			}
+	
+	while (!in.eof()) {
+		in >> palavra;
+		in >> ponto;
+		in >> quantidade;
+		for (i = 0 ;i < quantidade; i++) {
+			out << palavra << " ";				
 		}
-		
 	}
-	out.close() ;
-	in.close() ;
 		
-
+	out.close();
+	in.close();
+		
 }
